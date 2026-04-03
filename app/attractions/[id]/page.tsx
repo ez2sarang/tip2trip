@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { attractions } from '@/app/data/attractions'
+import NavigationButtons from '@/components/NavigationButtons'
 
 interface Props {
   params: Promise<{ id: string }>
@@ -90,20 +91,24 @@ export default async function AttractionDetailPage({ params }: Props) {
         </p>
       </div>
 
-      {/* Map link */}
-      <div className="flex flex-wrap gap-3 mb-10">
-        <Link
-          href="/map"
-          className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors"
-        >
-          🗺️ 지도에서 보기
-        </Link>
-        <Link
-          href="/attractions"
-          className="inline-flex items-center gap-2 bg-white hover:bg-stone-50 text-gray-700 font-semibold px-5 py-2.5 rounded-xl border border-stone-200 transition-colors"
-        >
-          ← 목록으로
-        </Link>
+      {/* Navigation & Map links */}
+      <div className="mb-10">
+        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">🚗 길찾기</h2>
+        <NavigationButtons lat={attraction.lat} lng={attraction.lng} name={attraction.name} />
+        <div className="flex flex-wrap gap-3 mt-4">
+          <Link
+            href="/map"
+            className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors"
+          >
+            🗺️ 지도에서 보기
+          </Link>
+          <Link
+            href="/attractions"
+            className="inline-flex items-center gap-2 bg-white hover:bg-stone-50 text-gray-700 font-semibold px-5 py-2.5 rounded-xl border border-stone-200 transition-colors"
+          >
+            ← 목록으로
+          </Link>
+        </div>
       </div>
 
       {/* Prev / Next navigation */}
