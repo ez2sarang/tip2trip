@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 const navLinks = [
   { href: '/attractions', label: '관광명소' },
+  { href: '/map', label: '🗺️ 지도' },
   { href: '/food', label: '맛집 & 음식' },
   { href: '/tips', label: '여행 팁' },
 ]

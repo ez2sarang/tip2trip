@@ -1,21 +1,12 @@
-interface Attraction {
-  id: number
-  name: string
-  category: string
-  description: string
-  address: string
-  hours: string
-  fee: string
-  tips: string
-  tags: string[]
-  image: string
-  rating: number
-  duration: string
-}
+import Link from 'next/link'
+import { Attraction } from '@/app/data/attractions'
 
 export default function AttractionCard({ attraction }: { attraction: Attraction }) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden hover:shadow-md transition-shadow">
+    <Link
+      href={`/attractions/${attraction.id}`}
+      className="group bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden hover:shadow-md transition-shadow block"
+    >
       <div className="bg-gradient-to-br from-amber-50 to-stone-100 p-10 flex items-center justify-center">
         <span className="text-7xl">{attraction.image}</span>
       </div>
@@ -23,7 +14,9 @@ export default function AttractionCard({ attraction }: { attraction: Attraction 
       <div className="p-6">
         <div className="flex items-start justify-between mb-3">
           <div>
-            <h3 className="text-xl font-bold text-gray-900">{attraction.name}</h3>
+            <h3 className="text-xl font-bold text-gray-900 group-hover:text-amber-700 transition-colors">
+              {attraction.name}
+            </h3>
             <span className="text-xs text-amber-700 font-medium">{attraction.category}</span>
           </div>
           <div className="flex items-center gap-1 bg-amber-50 px-2 py-1 rounded-lg">
@@ -67,6 +60,6 @@ export default function AttractionCard({ attraction }: { attraction: Attraction 
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
